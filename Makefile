@@ -26,8 +26,7 @@ FILE  := lapack-3.7.1/make.inc
 EXIST := $(shell ls | grep ${FILE})
 
 .PHONY: all
-#all: lapack sc clean
-all: sc clean
+all: lapack sc clean
 
 .PHONY: lapack
 lapack:
