@@ -7,7 +7,7 @@ Reference: Matsui and Iwasaki, ???, 2018
 Online tool: [GS analysis server](http://gs.bs.s.u-tokyo.ac.jp/)  
 Our Laboratory: [Iwasaki Lab](http://iwasakilab.bs.s.u-tokyo.ac.jp/eindex.html)  
 
-[![Build Status](https://travis-ci.org/MotomuMatsui/nj.svg?branch=master)](https://travis-ci.org/MotomuMatsui/nj)
+[![Build Status](https://travis-ci.org/MotomuMatsui/sc.svg?branch=master)](https://travis-ci.org/MotomuMatsui/sc)
 [![Ubuntu](https://img.shields.io/badge/Linux-Ubuntu-green.svg)](https://www.ubuntu.com/)
 [![CentOS](https://img.shields.io/badge/Linux-CentOS-green.svg)](https://www.centos.org/)
 [![Mac](https://img.shields.io/badge/Mac-macOS-green.svg)](https://www.apple.com/macos/)
