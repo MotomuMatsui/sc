@@ -1,18 +1,19 @@
-/******************************************\
-| Graph Splitting Method v2.0 (2018/06/01) |
-|                                          |
-| Copyright (c) 2015-2018 Motomu Matsui    |
-|     Distributed under the GNU GPL        |
-|                                          |
-|     Matsui M and Iwasaki W (2018)        |
-|     Systematic Biology, xx:xx-xx.        |
-|                                          |
-|     http://gs.bs.s.u-tokyo.ac.jp/        |
-\******************************************/
+/***************************************\
+| Spectral Clustering v1.0 (2018/10/12) |
+|                                       |
+| Copyright (c) 2015-2018 Motomu Matsui |
+|    Distributed under the GNU GPL      |
+|                                       |
+|    Matsui M and Iwasaki W (2018)      |
+|    Systematic Biology, xx:xx-xx.      |
+|                                       |
+|    http://gs.bs.s.u-tokyo.ac.jp/      |
+\***************************************/
 
 #include <algorithm>
 #include <vector>
 #include <tuple>
+#include <cmath> 
 
 using namespace std;
 
@@ -20,21 +21,21 @@ using namespace std;
 extern int eigen_lapack(double*&, double*&, int);
 
 //sc_functions.cpp (Split one cluster into two subclusters)
-extern void subMATRIX(double* const&, double*&, double*&, vector<int> const&, int const);
-extern void whichCUT(double* const&, int const, double* const&, int*&, int&, int const);
-extern void splitVECTOR(vector<int> const&, int const, int* const&, int const, vector<int>&, vector<int>&, int const);
+extern void CUT(double* const&, int const, double* const&, int*&, int&, int const, vector<int>&, vector<int>&);
 
-tuple<vector<int>,vector<int>> spectral_clustering(double* const& oW, vector<int> const& res, int const& num){
+tuple<vector<int>,vector<int>> SC(double* const (&W), int const& N){
 
-  // Cluster size
-  int N = (int)count(res.begin(), res.end(), num);
-  
-  double* W = new double[N*N]();
   double* D = new double[N]();
   double* A = new double[N*N]();  
 
-  //Rayleigh quotient of the submatrix
-  subMATRIX(oW, W, D, res, num);
+  //D
+  for(int r = 0; r < N; r++){
+    D[r] = 0.0;
+    for(int c = 0; c < N; c++){
+      D[r] += W[r*N+c];
+    }
+    D[r] = 1/sqrt(D[r]);
+  }
 
   //A = E-D*W*D
   for(int x = 0; x < N; x++){
@@ -55,13 +56,11 @@ tuple<vector<int>,vector<int>> spectral_clustering(double* const& oW, vector<int
   int* qi = new int[N]();
   int cut = 0;
   vector<int> a, b;
-  whichCUT(z, 0, D, qi, cut, N);
-  splitVECTOR(res, num, qi, cut, a, b, N);
+  CUT(z, 0, D, qi, cut, N, a, b);
   
   //free
-  delete[] A;
-  delete[] W;
   delete[] D;
+  delete[] A;
   delete[] z;
   delete[] qi;
 

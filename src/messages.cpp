@@ -1,14 +1,14 @@
-/******************************************\
-| Graph Splitting Method v2.0 (2018/06/01) |
-|                                          |
-| Copyright (c) 2015-2018 Motomu Matsui    |
-|     Distributed under the GNU GPL        |
-|                                          |
-|     Matsui M and Iwasaki W (2018)        |
-|     Systematic Biology, xx:xx-xx.        |
-|                                          |
-|     http://gs.bs.s.u-tokyo.ac.jp/        |
-\******************************************/
+/***************************************\
+| Spectral Clustering v1.0 (2018/10/12) |
+|                                       |
+| Copyright (c) 2015-2018 Motomu Matsui |
+|    Distributed under the GNU GPL      |
+|                                       |
+|    Matsui M and Iwasaki W (2018)      |
+|    Systematic Biology, xx:xx-xx.      |
+|                                       |
+|    http://gs.bs.s.u-tokyo.ac.jp/      |
+\***************************************/
 
 #include <iostream>
 #include <string>
